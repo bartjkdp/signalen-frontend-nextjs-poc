@@ -23,7 +23,7 @@ export default function VulAan() {
     formState: { errors },
   } = useForm();
   const router = useRouter();
-  const onSubmit = (data) => {
+  const onSubmit = () => {
     router.push("/incident/contact");
   };
 

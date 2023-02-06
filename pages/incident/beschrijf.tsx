@@ -23,7 +23,7 @@ export default function Beschrijf() {
     formState: { errors },
   } = useForm();
   const router = useRouter();
-  const onSubmit = (data) => {
+  const onSubmit = () => {
     router.push("/incident/vulaan");
   };
 

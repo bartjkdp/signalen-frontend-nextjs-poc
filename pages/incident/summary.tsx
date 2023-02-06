@@ -25,8 +25,8 @@ export default function VulAan() {
     formState: { errors },
   } = useForm();
   const router = useRouter();
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = () => {
+    console.log("Submitted");
   };
 
   return (
