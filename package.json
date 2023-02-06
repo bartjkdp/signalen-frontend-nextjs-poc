@@ -1,5 +1,5 @@
 {
-  "name": "signalen-frontend-utrecht-poc",
+  "name": "signalen-frontend-nextjs-poc",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -13,11 +13,22 @@
     "@types/node": "18.11.19",
     "@types/react": "18.0.27",
     "@types/react-dom": "18.0.10",
+    "@utrecht/assets": "^1.0.0-alpha.58",
+    "@utrecht/component-library-css": "^1.0.0-alpha.437",
+    "@utrecht/component-library-react": "^1.0.0-alpha.246",
+    "@utrecht/design-tokens": "^1.0.0-alpha.430",
+    "clsx": "^1.2.1",
     "eslint": "8.33.0",
     "eslint-config-next": "13.1.6",
     "next": "13.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.43.0",
+    "react-leaflet": "^4.2.0",
     "typescript": "4.9.5"
+  },
+  "devDependencies": {
+    "@utrecht/web-component-library-react": "1.0.0-alpha.436",
+    "@utrecht/web-component-library-stencil": "1.0.0-alpha.436"
   }
 }
