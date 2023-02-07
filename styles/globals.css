@@ -19,5 +19,8 @@ body {
     margin: -2em -2em 0;
     z-index: -1;
     width: 100%;
-    padding: 5rem;
+}
+
+.utrecht-page-footer__address {
+    padding: 2em;
 }
