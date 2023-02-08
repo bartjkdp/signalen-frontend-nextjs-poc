@@ -1,36 +1,25 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useContext } from "react";
 import { useRouter } from "next/router";
-import { useForm } from "react-hook-form";
 import {
   PrimaryActionButton,
   Heading1,
+  Heading2,
   PageHeader,
   PageFooter,
-  FormField,
-  Surface,
-  Document,
+  Paragraph,
   Page,
   PageContent,
-  FormLabel,
   LinkButton,
+  Document,
+  Surface,
 } from "@utrecht/component-library-react";
 import { PageHeaderTemplate } from "@/components/PageHeadertemplate";
-import Map from "@/components/Map";
+import SignalContext from "@/contexts/signal";
 
-export default function VulAan() {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
+export default function Bedankt() {
   const router = useRouter();
-  const onSubmit = () => {
-    router.push("/incident/contact");
-  };
-
-  const [showLocation, setShowLocation] = useState(false);
+  const [signal, setSignal] = useContext(SignalContext);
 
   return (
     <>
@@ -45,32 +34,28 @@ export default function VulAan() {
             </PageHeader>
             <PageContent>
               <main>
-                <Heading1>Locatie en vragen</Heading1>
+                <Heading1>Bedankt!</Heading1>
 
-                <form onSubmit={handleSubmit(onSubmit)}>
-                  <FormField>
-                    <FormLabel htmlFor="description">Waar is het?</FormLabel>
-                    <PrimaryActionButton
-                      type="button"
-                      onClick={() => setShowLocation(true)}
-                    >
-                      Kies een locatie
-                    </PrimaryActionButton>
-                  </FormField>
+                <Paragraph>
+                  Uw melding is bij ons bekend onder nummer: SIG-12.
+                </Paragraph>
+                <Paragraph>
+                  Hebt u een e-mailadres ingevuld? Dan ontvangt u een e-mail met
+                  alle gegevens van uw melding.
+                </Paragraph>
 
-                  {showLocation && (
-                    <Map onClose={() => setShowLocation(false)} />
-                  )}
+                <Heading2>Wat doen we met uw melding?</Heading2>
+                <Paragraph>
+                  Uw melding wordt ingepland: wij laten u binnen 5 werkdagen
+                  weten hoe en wanneer uw melding wordt afgehandeld. Dat doen we
+                  via e-mail.
+                </Paragraph>
 
-                  <LinkButton
-                    onClick={() => router.push("/incident/beschrijf")}
-                  >
-                    Vorige
-                  </LinkButton>
-                  <PrimaryActionButton type="submit">
-                    Volgende
-                  </PrimaryActionButton>
-                </form>
+                <PrimaryActionButton
+                  onClick={() => router.push("/incident/beschrijf")}
+                >
+                  Doe een melding
+                </PrimaryActionButton>
               </main>
             </PageContent>
             <PageFooter>

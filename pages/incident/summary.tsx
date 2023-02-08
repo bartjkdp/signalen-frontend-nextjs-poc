@@ -14,8 +14,11 @@ import {
   Surface,
 } from "@utrecht/component-library-react";
 import { PageHeaderTemplate } from "@/components/PageHeadertemplate";
+import { Fetcher } from "openapi-typescript-fetch";
+import { paths } from '@/client';
+import config from '@/config';
 
-export default function VulAan() {
+export default function Summary() {
   const {
     register,
     handleSubmit,
@@ -23,8 +26,40 @@ export default function VulAan() {
     formState: { errors },
   } = useForm();
   const router = useRouter();
-  const onSubmit = () => {
-    console.log("Submitted");
+
+  const onSubmit = async () => {
+    const fetcher = Fetcher.for<paths>()
+    fetcher.configure({ baseUrl:  config.baseUrl })
+
+    const createSignal = fetcher.path('/signals/v1/public/signals').method('post').create()
+
+    const { status, data } = await createSignal({
+      text: 'bla',
+      incident_date_start: '2020-01-01T00:00:00+00:00',
+      category: {
+        sub_category: 'http://localhost:8000/signals/v1/public/terms/categories/overig/sub_categories/overig'
+      },
+      reporter: {
+        email: '',
+        phone: '',
+        sharing_allowed: true
+      },
+      source: 'online',
+      location: {
+        address: {
+          openbare_ruimte: "Dam",
+          huisnummer: 20,
+          postcode: "1012NP",
+          woonplaats:"Amsterdam"
+        },
+        geometrie: {
+          type: "Point",
+          coordinates: [ 4.892263412475587,52.37303159338965 ]
+        }
+      }
+    })
+
+    router.push("/incident/bedankt")
   };
 
   return (
