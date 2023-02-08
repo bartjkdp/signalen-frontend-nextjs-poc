@@ -13,7 +13,6 @@ import {
   PageContent,
   FormLabel,
   LinkButton,
-  Textarea,
 } from "@utrecht/component-library-react";
 import { PageHeaderTemplate } from "@/components/PageHeadertemplate";
 
