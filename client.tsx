@@ -1688,7 +1688,10 @@ export interface components {
         postcode?: string;
         woonplaats?: string;
       };
-      geometrie?: string;
+      geometrie?: {
+        type: string;
+        coordinates?: number[];
+      };
       extra_properties?: string;
     };
     /** @description JSON Data */
